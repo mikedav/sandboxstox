@@ -167,4 +167,4 @@ def closeposition():
     db.session.commit()
     return redirect(url_for("account", id=account.id))
 
-app.run()
+
