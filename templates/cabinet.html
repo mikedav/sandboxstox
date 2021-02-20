@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav><a href="{{url_for('addaccount')}}">Add an account!</a></nav>
+
+{% for account in user.accounts %}
+<p> an account ${{account.balance}} com:{{account.commission}} 
+    <a href="{{url_for('account', id = account.id )}}">Manage</a>
+    <form method="POST" action="{{url_for('deleteaccount')}}">
+        <input type="hidden" name="account_id" value={{account.id}}>
+        <input type="submit" value="delete">
+    </form>
+</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+* {
+    text-align: center;
+}
+.warning {
+    color: red;
+}
+footer {
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+    right:0px;
+    height:40px;
+}
+a h1 {
+    color: black;
+    text-decoration: none;
+}
+
+.position {
+    border: solid black 1px;
+}

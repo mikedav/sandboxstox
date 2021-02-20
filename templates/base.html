@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stoxnbox</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <a href="{{url_for('index')}}"><h1>Stoxnbox</h1></a>
+    <h3>(Stock sandbox)</h3>
+{% if warning %}
+<p class="warning">{{warning}}</p>
+{% endif %}
+{% block content %}
+
+{% endblock %}
+<footer>
+<hr>
+{% if user %}
+<nav>{{user.username}} <a href="{{url_for('logout')}}">Log out!</a></nav>
+{% endif %}
+</footer>
+</body>
+</html>
+

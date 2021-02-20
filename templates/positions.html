@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4> Here are open positions for this account. They are worth {{net_worth}} and you can close them, gaining {{com_worth}}. </h4>
+<h3> ${{account.balance}} </h3>
+<p>Your profits: {{profits}}</p>
+
+<a href="{{url_for('addposition', id=account.id)}}">Add one</a>
+
+{% for position in account.positions %}
+<div class=position>
+    <p> {{position.ticker}}x{{position.amount}} worth {{position.get_value()}} bought for {{position.bought_for}}</p>
+    <form method="POST" action="{{url_for('closeposition')}}">
+        <input type="hidden" name="position_id" value={{position.id}}>
+        <input type="submit" value="close yielding {{position.get_value()*(1-account.commission)}}">
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}
