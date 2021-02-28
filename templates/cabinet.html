@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class ="info">
+  <p>Your accounts
+    {% if user.accounts|length > 0 %} are {% else %} will be {% endif %}
+    listed below
+    <span class="button">
+      <a href="{{url_for('addaccount')}}">add an account</a>
+    </span>
+  </p>
+</div>
+{% for account in user.accounts %}
+<div class="account">
+  <table style="width:60%">
+    <tr>
+      <th>Value</th>
+      <th>Overall profit</th>
+      <th>Balance</th>
+      <th>Commission</th>
+    </tr>
+    <tr>
+      <td>${{ '{:.2f}'.format(account.get_worth())}}</td>
+      <td>${{ '{:.2f}'.format(account.get_profits())}}</td>
+      <td>${{ '{:.2f}'.format(account.balance)}}</td>
+      <td>{{  '{:.6f}'.format(account.commission)}}</td>
+    </tr>
+  </table>
+  <div class="control-panel">
+  <span class="button">
+    <a href="{{url_for('account', id = account.id )}}">manage</a>
+  </span>
+  <form class="delbuttonform" method="POST" action="{{url_for('deleteaccount')}}">
+    <input type="hidden" name="account_id" value={{account.id}}>
+    <input type="submit" value="delete" class="button">
+  </form>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}

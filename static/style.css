@@ -1,0 +1,51 @@
+.warning {
+    color: red;
+}
+.logo {
+    font-family: "Monaco", monospace, sans-serif;
+    font-size: 26px;
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.slogan {
+    font-size: 16px;
+    font-style: italic;
+}
+.position {
+    border: solid black 1px;
+}
+.button {
+  padding: 3px;
+  border: solid black 1px;
+  background-color: gainsboro;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+.button:hover {
+  background-color: white;
+}
+.button a {
+    color:black;
+    text-decoration: none;
+}
+.logout {
+  float: right;
+}
+header {
+  border: solid black 1px;
+  padding: 10px;
+}
+.delbuttonform {
+  display:inline;
+  float:top right;
+}
+table tr td {
+  text-align: center;
+}
+table {
+  float:left;
+}
+.control-panel {
+  float: left;
+}

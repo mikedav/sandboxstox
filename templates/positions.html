@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="info">
+<p>Here
+  {% if account.positions|length > 0 %} are {% else %} will be {% endif %}
+  positions for this account.
+  Account balance is {{account.balance}}.
+  Current profit is {{account.get_profits()}}
+  <span class = button>
+    <a href="{{url_for('addposition', id=account.id)}}">new position</a>
+  </span>
+</div>
+
+
+
+{% for position in account.positions %}
+<div class=position>
+    <p> {{position.ticker}}x{{position.amount}} worth {{position.get_value()}} bought for {{position.bought_for}}</p>
+    <form method="POST" action="{{url_for('closeposition')}}">
+        <input type="hidden" name="position_id" value={{position.id}}>
+        <input type="submit" value="close yielding {{position.get_value()*(1-account.commission)}}">
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}
